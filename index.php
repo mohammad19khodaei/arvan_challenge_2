@@ -2,7 +2,6 @@
 
 use App\Cache\Cache;
 use App\Queue\Queue;
-use App\RabbitMQ\RabbitMQ;
 
 require_once __DIR__.'/vendor/autoload.php';
 
@@ -10,7 +9,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     $code = $_POST['code'];
     $code = strtolower($code);
 
-    $isCompaingUnderway = Cache::get($code) > 0;
+    $isCompaingUnderway = Cache::get('campaign:'.$code) > 0;
 
     if (!$isCompaingUnderway) {
         return;
