@@ -10,7 +10,7 @@ services:
         image: redis:latest
         container_name: cache
         ports:
-            - "6380:6379"
+            - "6379:6379"
     queue:
         image: rabbitmq:3-management
         container_name: queue
