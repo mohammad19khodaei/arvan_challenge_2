@@ -1,7 +1,7 @@
 <?php
 
 return [
-    'host' => 'localhost',
+    'host' => 'queue',
     'port' => 5672,
     'username' => 'guest',
     'password' => 'guest',

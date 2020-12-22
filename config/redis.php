@@ -2,6 +2,6 @@
 
 
 return [
-    'host' => 'localhost',
+    'host' => 'cache',
     'port' => 6379,
 ];
