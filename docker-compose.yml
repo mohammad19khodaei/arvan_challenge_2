@@ -6,14 +6,34 @@ services:
         container_name: app
         ports:
             - "81:80"
+        networks: 
+            - arvan
     cache:
-        image: redis:latest
+        image: redis:alpine
         container_name: cache
         ports:
             - "6379:6379"
+        volumes: 
+            - 'arvanredis:/data'
+        networks:
+            - arvan
     queue:
         image: rabbitmq:3-management
+        hostname: arvan_rabbitmq
         container_name: queue
         ports:
             - "5672:5672"
             - "15672:15672"
+        volumes: 
+            - 'arvanrabbitmq:/var/lib/rabbitmq'
+        networks:
+            - arvan
+networks:
+    arvan:
+        name: arvan_network
+        driver: bridge
+volumes: 
+    arvanredis:
+        driver: local
+    arvanrabbitmq:
+        driver: local
